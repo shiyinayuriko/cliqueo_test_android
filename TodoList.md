@@ -1,7 +1,7 @@
 ## Core Features
 
 - [ ] A. Real-Time (or Mocked) Market Data Feed
-  - [ ] Fetch (or simulate) live price data for *at least* one crypto pair (e.g., BTC-USDT).
+  - [x] Fetch (or simulate) live price data for *at least* one crypto pair (e.g., BTC-USDT).
   - [ ] Display continuously updating bid/ask and last trade on a *Market Overview* screen.
   - [ ] Updates should occur ≤ 500 ms without jank on a Pixel 6 (≈ 3 000 msgs/s sustained in mock mode is a plus).
   
@@ -24,7 +24,7 @@
 
 ## Extended / Optional Enhancements
 
-- [ ] WebSocket Integration with a public API (Binance, Coinbase Pro, etc.).
+- [x] WebSocket Integration with a public API (Binance, Coinbase Pro, etc.).
 - [ ] Jetpack Compose + StateFlow end-to-end (no XML).
 - [ ] Multiple Timeframes & Indicators (MA, RSI overlays).
 - [ ] Push Notifications / Local Alerts when price crosses a threshold (WorkManager or FCM).
@@ -43,3 +43,5 @@ Feel free to note unfinished stretch items in the README—clarity about next st
 - [ ] (Optional) One instrumentation/UI test with Espresso or Compose UI Test.
 - [ ] Explain any performance optimizations in `README`.
 - [ ] instructions info in README 
+- [ ] optimize api retry strategy
+- [ ] http3 + retrofit log and intercept
