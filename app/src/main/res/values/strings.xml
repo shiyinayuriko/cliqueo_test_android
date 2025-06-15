@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Cliqueo Trading App Task</string>
+    <string name="btc_usdt">BTC/USDT</string>
+    <string name="eth_usdt">ETH/USDT</string>
 </resources>
