@@ -12,6 +12,10 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
+import tech.clique.android.test.data.KlineData
+import tech.clique.android.test.data.KlineDataSource
+import tech.clique.android.test.data.TickerData
+import tech.clique.android.test.data.TickerDataSource
 import java.lang.reflect.Type
 
 
@@ -84,7 +88,11 @@ data class FullTickerItem(
     @SerializedName("firstId") val firstTradeId: Long,
     @SerializedName("lastId") val lastTradeId: Long,
     @SerializedName("count") val tradeCount: Long,
-)
+) : TickerDataSource {
+    override fun toTickerData(): TickerData {
+        return TickerData(symbol, lastPrice, priceChangePercent)
+    }
+}
 
 
 @JsonAdapter(KlineItemDeserializer::class)
@@ -101,7 +109,19 @@ data class KlineItem(
     val takerBuyBaseAssetVolume: String,
     val takerBuyQuoteAssetVolume: String,
     val ignore: String,
-)
+) : KlineDataSource {
+    override fun toKlineData(): KlineData {
+        return KlineData(
+            openTime = openTime,
+            closeTime = closeTime,
+            openPrice = openPrice,
+            closePrice = closePrice,
+            highPrice = highPrice,
+            lowPrice = lowPrice,
+            baseAssetVolume = baseAssetVolume,
+        )
+    }
+}
 
 private class KlineItemDeserializer : JsonDeserializer<KlineItem> {
     override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): KlineItem {

@@ -13,6 +13,10 @@ import okhttp3.Request.Builder
 import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
+import tech.clique.android.test.data.KlineData
+import tech.clique.android.test.data.KlineDataSource
+import tech.clique.android.test.data.TickerData
+import tech.clique.android.test.data.TickerDataSource
 import tech.clique.android.test.utils.GsonUtil
 import tech.clique.android.test.utils.logD
 import tech.clique.android.test.utils.logE
@@ -45,7 +49,12 @@ object BinanceWebSocketClient {
         @SerializedName("F") val firstTradeId: Long,
         @SerializedName("L") val lastTradeId: Long,
         @SerializedName("n") val totalNumberOfTrades: Long,
-    ) : BaseModel()
+    ) : BaseModel(), TickerDataSource {
+        override fun toTickerData(): TickerData {
+            return TickerData(symbol, lastPrice, priceChangePercent)
+        }
+    }
+
 
     fun subscribeTickersData(): Observable<FullTickerModel> {
         return Observable.create { emitter ->
@@ -160,7 +169,19 @@ object BinanceWebSocketClient {
         @SerializedName("V") val takerBuyBaseAssetVolume: String,
         @SerializedName("Q") val takerBuyQuoteAssetVolume: String,
         @SerializedName("B") val ignore: String,
-    ) : BaseModel()
+    ) : BaseModel(), KlineDataSource {
+        override fun toKlineData(): KlineData {
+            return KlineData(
+                openTime = openTime,
+                closeTime = closeTime,
+                openPrice = openPrice,
+                closePrice = closePrice,
+                highPrice = highPrice,
+                lowPrice = lowPrice,
+                baseAssetVolume = baseAssetVolume,
+            )
+        }
+    }
 
     fun subscribeKlineData(@Symbol symbol: String, @KlineInterval interval: String): Observable<KlineModel> {
         return Observable.create { emitter ->

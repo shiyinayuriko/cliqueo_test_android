@@ -45,3 +45,4 @@ Feel free to note unfinished stretch items in the README—clarity about next st
 - [ ] instructions info in README 
 - [ ] optimize api retry strategy
 - [ ] http3 + retrofit log and intercept
+- [ ] add cache for network fetch
