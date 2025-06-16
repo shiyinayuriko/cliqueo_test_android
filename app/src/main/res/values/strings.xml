@@ -2,4 +2,10 @@
     <string name="app_name">Cliqueo Trading App Task</string>
     <string name="btc_usdt">BTC/USDT</string>
     <string name="eth_usdt">ETH/USDT</string>
+
+    <string name="kline_marker_text_open_time">Time: %1$s</string>
+    <string name="kline_marker_text_open_price">Open Price: %1$s</string>
+    <string name="kline_marker_text_high_price">High Price: %1$s</string>
+    <string name="kline_marker_text_low_price">Low Price: %1$s</string>
+    <string name="kline_marker_text_close_price">Close Price: %1$s</string>
 </resources>
