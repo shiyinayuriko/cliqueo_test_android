@@ -14,11 +14,11 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import tech.clique.android.test.data.DataRepository
 import tech.clique.android.test.data.model.KlineData
-import tech.clique.android.test.data.network.binance.KlineInterval
 import tech.clique.android.test.data.Symbol
+import tech.clique.android.test.data.KlineInterval
 import tech.clique.android.test.utils.logE
 
-class KlineViewModel(symbol: Symbol, interval: String) : ViewModel() {
+class KlineViewModel(symbol: Symbol, interval: KlineInterval) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
 
     private var baseTime = 0L
@@ -36,7 +36,8 @@ class KlineViewModel(symbol: Symbol, interval: String) : ViewModel() {
                     baseTime = sorted.firstOrNull()?.openTime ?: 0
                     //TODO can set with const
                     intervalTime = if (sorted.size >= 2) sorted[1].openTime - sorted[0].openTime else 1
-
+                    // need more check for 1M case
+//                    logD("interval ${interval.queryStr}: ${interval.timeMs == intervalTime} ${interval.timeMs} == $intervalTime")
                     val keyTrimmed = sorted.map { kline ->
                         val index = (kline.openTime - baseTime) / intervalTime
                         index to kline
@@ -79,9 +80,9 @@ class KlineViewModel(symbol: Symbol, interval: String) : ViewModel() {
 }
 
 @Composable
-fun klineViewModel(symbol: Symbol, @KlineInterval interval: String): KlineViewModel {
+fun klineViewModel(symbol: Symbol, interval: KlineInterval): KlineViewModel {
     return viewModel(
-        key = "klineVM_${symbol.symbol}_$interval",
+        key = "klineVM_${symbol.symbol}_${interval.queryStr}",
         factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 @Suppress("UNCHECKED_CAST")

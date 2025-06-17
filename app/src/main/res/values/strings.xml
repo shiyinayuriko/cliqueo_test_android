@@ -4,10 +4,43 @@
     <string name="market_list_tab_favourite">Favourite</string>
     <string name="market_list_tab_market">Market</string>
 
+    <string name="INTERVAL_1s">1 sec</string>
+    <string name="INTERVAL_1m">1 min</string>
+    <string name="INTERVAL_3m">3 mins</string>
+    <string name="INTERVAL_5m">5 mins</string>
+    <string name="INTERVAL_15m">15 mins</string>
+    <string name="INTERVAL_30m">30 mins</string>
+    <string name="INTERVAL_1h">1 hr</string>
+    <string name="INTERVAL_2h">2 hrs</string>
+    <string name="INTERVAL_4h">4 hrs</string>
+    <string name="INTERVAL_6h">6 hrs</string>
+    <string name="INTERVAL_8h">8 hrs</string>
+    <string name="INTERVAL_12h">12 hrs</string>
+    <string name="INTERVAL_1d">1 day</string>
+    <string name="INTERVAL_3d">3 days</string>
+    <string name="INTERVAL_1w">1 week</string>
+    <string name="INTERVAL_1M">1 month</string>
 
     <string name="kline_marker_text_open_time">Time: %1$s</string>
     <string name="kline_marker_text_open_price">Open Price: %1$s</string>
     <string name="kline_marker_text_high_price">High Price: %1$s</string>
     <string name="kline_marker_text_low_price">Low Price: %1$s</string>
     <string name="kline_marker_text_close_price">Close Price: %1$s</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>

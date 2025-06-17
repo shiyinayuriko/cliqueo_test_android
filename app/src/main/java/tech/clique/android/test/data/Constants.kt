@@ -1,5 +1,7 @@
 package tech.clique.android.test.data
 
+import tech.clique.android.test.R
+
 enum class Symbol(
     val baseAsset: String,
     val quoteAsset: String,
@@ -62,4 +64,27 @@ enum class Symbol(
             return cache[symbol.uppercase()] ?: UNKNOWN
         }
     }
+}
+
+enum class KlineInterval(
+    val queryStr: String,
+    val display: Int,
+    val timeMs: Long,
+) {
+    INTERVAL_1s("1s", R.string.INTERVAL_1s, 1000L),
+    INTERVAL_1m("1m", R.string.INTERVAL_1m, 1000L * 60),
+    INTERVAL_3m("3m", R.string.INTERVAL_3m, 1000L * 60 * 3),
+    INTERVAL_5m("5m", R.string.INTERVAL_5m, 1000L * 60 * 5),
+    INTERVAL_15m("15m", R.string.INTERVAL_15m, 1000L * 60 * 15),
+    INTERVAL_30m("30m", R.string.INTERVAL_30m, 1000L * 60 * 30),
+    INTERVAL_1h("1h", R.string.INTERVAL_1h, 1000L * 60 * 60),
+    INTERVAL_2h("2h", R.string.INTERVAL_2h, 1000L * 60 * 60 * 2),
+    INTERVAL_4h("4h", R.string.INTERVAL_4h, 1000L * 60 * 60 * 4),
+    INTERVAL_6h("6h", R.string.INTERVAL_6h, 1000L * 60 * 60 * 6),
+    INTERVAL_8h("8h", R.string.INTERVAL_8h, 1000L * 60 * 60 * 8),
+    INTERVAL_12h("12h", R.string.INTERVAL_12h, 1000L * 60 * 60 * 12),
+    INTERVAL_1d("1d", R.string.INTERVAL_1d, 1000L * 60 * 60 * 24),
+    INTERVAL_3d("3d", R.string.INTERVAL_3d, 1000L * 60 * 60 * 24 * 3),
+    INTERVAL_1w("1w", R.string.INTERVAL_1w, 1000L * 60 * 60 * 24 * 7),
+    INTERVAL_1M("1M", R.string.INTERVAL_1M, 1000L * 60 * 60 * 24 * 31),
 }

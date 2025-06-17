@@ -5,10 +5,10 @@
   - [x] Display continuously updating bid/ask and last trade on a *Market Overview* screen.
   - [x] Updates should occur ≤ 500 ms without jank on a Pixel 6 (≈ 3 000 msgs/s sustained in mock mode is a plus).
   
-- [ ] B. Candlestick (or Line) Chart
-  - [ ] Embed the chosen chart component inside a *Detail* screen.
-  - [ ] Render price history as candlesticks (preferred) or a line chart.
-  - [ ] Support common interactions: pinch-zoom, pan/scroll, and value marker on tap (O/H/L/C display).
+- [x] B. Candlestick (or Line) Chart
+  - [x] Embed the chosen chart component inside a *Detail* screen.
+  - [x] Render price history as candlesticks (preferred) or a line chart.
+  - [x] Support common interactions: pinch-zoom, pan/scroll, and value marker on tap (O/H/L/C display).
 
 - [ ] C. Basic Trading Interface
   - [ ] Watchlist Screen – Add/remove crypto pairs; persist locally (e.g., DataStore).
@@ -50,3 +50,4 @@ Feel free to note unfinished stretch items in the README—clarity about next st
 - [ ] ~~support pull refresh~~
 - [ ] replace LiveData to StateFlow
 - [ ] optimize the loading in favourite page with separate api request?
+- [ ] polish UI tab height

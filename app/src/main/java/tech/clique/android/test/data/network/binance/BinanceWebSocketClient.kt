@@ -189,7 +189,7 @@ object BinanceWebSocketClient {
         }
     }
 
-    fun subscribeKlineData(symbol: String, @KlineInterval interval: String): Observable<KlineModel> {
+    fun subscribeKlineData(symbol: String, interval: String): Observable<KlineModel> {
         return Observable.create { emitter ->
             val client = OkHttpClient()
             val request: Request = Builder().url("wss://data-stream.binance.vision/ws").build()

@@ -37,7 +37,7 @@ object BinanceApiClient {
 
     fun getKlineData(
         symbol: String,
-        @KlineInterval interval: String,
+        interval: String,
         startTime: Long? = null,
         endTime: Long? = null,
         limit: Int = 500,
