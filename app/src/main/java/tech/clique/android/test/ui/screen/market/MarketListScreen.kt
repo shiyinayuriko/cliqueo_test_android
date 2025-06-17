@@ -1,4 +1,4 @@
-package tech.clique.android.test.pages.market
+package tech.clique.android.test.ui.screen.market
 
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background

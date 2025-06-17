@@ -13,10 +13,10 @@ import okhttp3.Request.Builder
 import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
-import tech.clique.android.test.data.KlineData
-import tech.clique.android.test.data.KlineDataSource
-import tech.clique.android.test.data.TickerData
-import tech.clique.android.test.data.TickerDataSource
+import tech.clique.android.test.data.model.KlineData
+import tech.clique.android.test.data.model.KlineDataSource
+import tech.clique.android.test.data.model.TickerData
+import tech.clique.android.test.data.model.TickerDataSource
 import tech.clique.android.test.utils.GsonUtil
 import tech.clique.android.test.utils.logD
 import tech.clique.android.test.utils.logE

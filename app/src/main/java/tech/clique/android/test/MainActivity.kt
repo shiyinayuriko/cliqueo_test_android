@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import tech.clique.android.test.ui.theme.AppNavigation
+import tech.clique.android.test.ui.screen.AppNavigation
 import tech.clique.android.test.ui.theme.CliqueoTestAndroidTheme
 
 class MainActivity : ComponentActivity() {

@@ -1,4 +1,4 @@
-package tech.clique.android.test.data
+package tech.clique.android.test.data.model
 
 import tech.clique.android.test.data.network.binance.Symbol
 

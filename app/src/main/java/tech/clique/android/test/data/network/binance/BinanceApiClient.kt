@@ -12,10 +12,10 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
-import tech.clique.android.test.data.KlineData
-import tech.clique.android.test.data.KlineDataSource
-import tech.clique.android.test.data.TickerData
-import tech.clique.android.test.data.TickerDataSource
+import tech.clique.android.test.data.model.KlineData
+import tech.clique.android.test.data.model.KlineDataSource
+import tech.clique.android.test.data.model.TickerData
+import tech.clique.android.test.data.model.TickerDataSource
 import java.lang.reflect.Type
 
 

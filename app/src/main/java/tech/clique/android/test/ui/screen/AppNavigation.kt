@@ -1,17 +1,16 @@
-package tech.clique.android.test.ui.theme
+package tech.clique.android.test.ui.screen
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import tech.clique.android.test.pages.detail.DetailScreen
-import tech.clique.android.test.pages.market.MarketListScreen
-import tech.clique.android.test.ui.theme.NavigationRoutes.DETAIL
-import tech.clique.android.test.ui.theme.NavigationRoutes.MARKET_LIST
+import tech.clique.android.test.ui.screen.detail.DetailScreen
+import tech.clique.android.test.ui.screen.market.MarketListScreen
+import tech.clique.android.test.ui.screen.NavigationRoutes.DETAIL
+import tech.clique.android.test.ui.screen.NavigationRoutes.MARKET_LIST
 
 object NavigationRoutes {
     const val MARKET_LIST = "marketList"

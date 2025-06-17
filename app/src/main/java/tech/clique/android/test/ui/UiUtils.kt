@@ -1,8 +1,8 @@
-package tech.clique.android.test.pages
+package tech.clique.android.test.ui
 
 import android.content.Context
 import tech.clique.android.test.R
-import tech.clique.android.test.data.TickerData
+import tech.clique.android.test.data.model.TickerData
 import tech.clique.android.test.data.network.binance.BTCUSDT
 import tech.clique.android.test.data.network.binance.ETHUSDT
 

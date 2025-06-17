@@ -1,4 +1,4 @@
-package tech.clique.android.test.pages.market
+package tech.clique.android.test.ui.screen.market
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import tech.clique.android.test.data.DataRepository
-import tech.clique.android.test.data.TickerData
+import tech.clique.android.test.data.model.TickerData
 
 
 class MarketListViewModel : ViewModel() {

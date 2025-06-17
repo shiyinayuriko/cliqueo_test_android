@@ -1,4 +1,4 @@
-package tech.clique.android.test.pages.market
+package tech.clique.android.test.ui.screen.market
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -22,8 +22,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import tech.clique.android.test.pages.symbolToDisplayName
-import tech.clique.android.test.pages.trimmedPrice
+import tech.clique.android.test.ui.symbolToDisplayName
+import tech.clique.android.test.ui.trimmedPrice
 import tech.clique.android.test.ui.theme.DecreasingColor
 import tech.clique.android.test.ui.theme.IncreasingColor
 import tech.clique.android.test.ui.theme.NeutralColor

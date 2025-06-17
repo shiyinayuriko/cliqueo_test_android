@@ -1,4 +1,4 @@
-package tech.clique.android.test.pages.detail
+package tech.clique.android.test.ui.screen.detail
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.LiveData
@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import tech.clique.android.test.data.DataRepository
-import tech.clique.android.test.data.KlineData
+import tech.clique.android.test.data.model.KlineData
 import tech.clique.android.test.data.network.binance.KlineInterval
 import tech.clique.android.test.data.network.binance.Symbol
 

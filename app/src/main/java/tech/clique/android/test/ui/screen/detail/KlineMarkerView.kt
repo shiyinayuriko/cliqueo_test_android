@@ -1,4 +1,4 @@
-package tech.clique.android.test.pages.detail
+package tech.clique.android.test.ui.screen.detail
 
 import android.content.Context
 import com.github.mikephil.charting.components.MarkerView
@@ -7,9 +7,9 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.utils.MPPointF
 import tech.clique.android.test.R
-import tech.clique.android.test.data.KlineData
+import tech.clique.android.test.data.model.KlineData
 import tech.clique.android.test.databinding.KlineMarkerViewBinding
-import tech.clique.android.test.pages.toTrimmedPrice
+import tech.clique.android.test.ui.toTrimmedPrice
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

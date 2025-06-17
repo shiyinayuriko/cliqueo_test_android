@@ -1,4 +1,4 @@
-package tech.clique.android.test.pages.detail
+package tech.clique.android.test.ui.screen.detail
 
 import android.graphics.Color
 import android.graphics.Paint
@@ -30,7 +30,7 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import tech.clique.android.test.data.network.binance.BTCUSDT
 import tech.clique.android.test.data.network.binance.INTERVAL_15m
 import tech.clique.android.test.data.network.binance.Symbol
-import tech.clique.android.test.pages.symbolToDisplayName
+import tech.clique.android.test.ui.symbolToDisplayName
 import tech.clique.android.test.ui.theme.DecreasingColor
 import tech.clique.android.test.ui.theme.IncreasingColor
 import java.text.SimpleDateFormat

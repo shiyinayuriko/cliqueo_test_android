@@ -1,6 +1,8 @@
 package tech.clique.android.test.data
 
 import io.reactivex.rxjava3.core.Observable
+import tech.clique.android.test.data.model.KlineData
+import tech.clique.android.test.data.model.TickerData
 import tech.clique.android.test.data.network.NetworkClient
 import tech.clique.android.test.data.network.binance.KlineInterval
 import tech.clique.android.test.data.network.binance.Symbol

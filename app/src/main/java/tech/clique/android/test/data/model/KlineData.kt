@@ -1,4 +1,4 @@
-package tech.clique.android.test.data
+package tech.clique.android.test.data.model
 
 
 data class KlineData(
