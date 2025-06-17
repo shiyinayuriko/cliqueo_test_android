@@ -16,6 +16,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -30,6 +31,8 @@ import tech.clique.android.test.data.network.binance.BTCUSDT
 import tech.clique.android.test.data.network.binance.INTERVAL_15m
 import tech.clique.android.test.data.network.binance.Symbol
 import tech.clique.android.test.pages.symbolToDisplayName
+import tech.clique.android.test.ui.theme.DecreasingColor
+import tech.clique.android.test.ui.theme.IncreasingColor
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -72,8 +75,8 @@ fun KLineChart(
     val dataSet = remember {
         CandleDataSet(emptyList(), symbol.symbolToDisplayName(context))
             .apply {
-                decreasingColor = Color.RED
-                increasingColor = Color.GREEN
+                decreasingColor = DecreasingColor.toArgb()
+                increasingColor = IncreasingColor.toArgb()
                 decreasingPaintStyle = Paint.Style.FILL
                 increasingPaintStyle = Paint.Style.FILL
                 shadowColorSameAsCandle = true

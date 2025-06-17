@@ -3,6 +3,12 @@
     <string name="btc_usdt">BTC/USDT</string>
     <string name="eth_usdt">ETH/USDT</string>
 
+    <string name="market_list_title">Markets</string>
+
+    <string name="market_list_tab_favourite">Favourite</string>
+    <string name="market_list_tab_market">Market</string>
+
+
     <string name="kline_marker_text_open_time">Time: %1$s</string>
     <string name="kline_marker_text_open_price">Open Price: %1$s</string>
     <string name="kline_marker_text_high_price">High Price: %1$s</string>

@@ -36,7 +36,7 @@ Feel free to note unfinished stretch items in the README—clarity about next st
 
 ## Custom Tasks
 
-- [ ] check Material 3 guidance 
+- [x] check Material 3 guidance 
 - [ ] (Optional) responsive design for tablets
 - [ ] check `Choreographer` or `JankStats`
 - [ ] setup unit tests (e.g., price-parsing logic, order-placement flow).
