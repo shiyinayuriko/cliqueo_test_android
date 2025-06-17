@@ -6,7 +6,8 @@ import tech.clique.android.test.data.model.TickerData
 import tech.clique.android.test.data.network.binance.BinanceApiClient
 import tech.clique.android.test.data.network.binance.BinanceWebSocketClient
 import tech.clique.android.test.data.network.binance.KlineInterval
-import tech.clique.android.test.data.network.binance.Symbol
+import tech.clique.android.test.data.Symbol
+import tech.clique.android.test.data.network.binance.binanceSymbol
 
 object NetworkClient {
     fun fetchTickers(): Observable<List<TickerData>> {
@@ -24,12 +25,12 @@ object NetworkClient {
     }
 
     fun fetchKline(
-        @Symbol symbol: String,
+        symbol: Symbol,
         @KlineInterval interval: String,
         startTime: Long? = null,
         endTime: Long? = null,
     ): Observable<Map<Long, KlineData>> {
-        return BinanceApiClient.getKlineData(symbol, interval, startTime, endTime).map { list ->
+        return BinanceApiClient.getKlineData(symbol.binanceSymbol, interval, startTime, endTime).map { list ->
             list.associate {
                 val kLineData = it.toKlineData()
                 kLineData.openTime to kLineData
@@ -37,8 +38,8 @@ object NetworkClient {
         }
     }
 
-    fun subscribeKline(@Symbol symbol: String, @KlineInterval interval: String): Observable<KlineData> {
-        return BinanceWebSocketClient.subscribeKlineData(symbol, interval)
+    fun subscribeKline(symbol: Symbol, @KlineInterval interval: String): Observable<KlineData> {
+        return BinanceWebSocketClient.subscribeKlineData(symbol.binanceSymbol, interval)
             .map { it.detail.toKlineData() }
     }
 }

@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 import tech.clique.android.test.R
-import tech.clique.android.test.data.network.binance.BTCUSDT
+import tech.clique.android.test.data.Symbol
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -69,7 +69,7 @@ fun MarketListScreen(
                 modifier = Modifier.fillMaxWidth()
             ) { page ->
                 when (tabs[page]) {
-                    R.string.market_list_tab_favourite -> MarketList(navController, filters = listOf(BTCUSDT.uppercase()))
+                    R.string.market_list_tab_favourite -> MarketList(navController, filters = listOf(Symbol.BTCUSDT))
                     R.string.market_list_tab_market -> MarketList(navController)
                 }
             }

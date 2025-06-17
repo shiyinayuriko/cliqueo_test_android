@@ -15,6 +15,7 @@ import okhttp3.WebSocket
 import okhttp3.WebSocketListener
 import tech.clique.android.test.data.model.KlineData
 import tech.clique.android.test.data.model.KlineDataSource
+import tech.clique.android.test.data.Symbol
 import tech.clique.android.test.data.model.TickerData
 import tech.clique.android.test.data.model.TickerDataSource
 import tech.clique.android.test.utils.GsonUtil
@@ -51,7 +52,12 @@ object BinanceWebSocketClient {
         @SerializedName("n") val totalNumberOfTrades: Long,
     ) : BaseModel(), TickerDataSource {
         override fun toTickerData(): TickerData {
-            return TickerData(symbol, lastPrice, priceChangePercent)
+            return TickerData(
+                Symbol.fromSymbol(symbol),
+                lastPrice,
+                bestBidPrice,
+                bestAskPrice,
+                priceChangePercent)
         }
     }
 
@@ -64,7 +70,7 @@ object BinanceWebSocketClient {
                 override fun onOpen(webSocket: WebSocket, response: Response) {
                     val requestModel = RequestModel(
                         method = "SUBSCRIBE",
-                        params = ALL_SYMBOLS.map { symbol -> "$symbol@ticker" }
+                        params = ALL_SYMBOLS.map { symbol -> "${symbol.lowercase()}@ticker" }
                     )
                     GsonUtil.toJson(requestModel)?.also {
                         webSocket.send(it)
@@ -115,7 +121,7 @@ object BinanceWebSocketClient {
                 override fun onOpen(webSocket: WebSocket, response: Response) {
                     val requestModel = RequestModel(
                         method = "SUBSCRIBE",
-                        params = ALL_SYMBOLS.map { symbol -> "$symbol@aggTrade" }
+                        params = ALL_SYMBOLS.map { symbol -> "${symbol.lowercase()}@aggTrade" }
                     )
                     GsonUtil.toJson(requestModel)?.also {
                         webSocket.send(it)
@@ -183,7 +189,7 @@ object BinanceWebSocketClient {
         }
     }
 
-    fun subscribeKlineData(@Symbol symbol: String, @KlineInterval interval: String): Observable<KlineModel> {
+    fun subscribeKlineData(symbol: String, @KlineInterval interval: String): Observable<KlineModel> {
         return Observable.create { emitter ->
             val client = OkHttpClient()
             val request: Request = Builder().url("wss://data-stream.binance.vision/ws").build()
@@ -192,7 +198,7 @@ object BinanceWebSocketClient {
                     val requestModel = RequestModel(
                         method = "SUBSCRIBE",
                         params = listOf(
-                            "$symbol@kline_$interval"
+                            "${symbol.lowercase()}@kline_$interval"
                         )
                     )
                     GsonUtil.toJson(requestModel)?.also {

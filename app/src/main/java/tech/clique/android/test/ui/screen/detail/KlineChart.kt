@@ -27,10 +27,9 @@ import com.github.mikephil.charting.data.CandleData
 import com.github.mikephil.charting.data.CandleDataSet
 import com.github.mikephil.charting.data.CandleEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
-import tech.clique.android.test.data.network.binance.BTCUSDT
 import tech.clique.android.test.data.network.binance.INTERVAL_15m
-import tech.clique.android.test.data.network.binance.Symbol
-import tech.clique.android.test.ui.symbolToDisplayName
+import tech.clique.android.test.data.Symbol
+import tech.clique.android.test.ui.toDisplayName
 import tech.clique.android.test.ui.theme.DecreasingColor
 import tech.clique.android.test.ui.theme.IncreasingColor
 import java.text.SimpleDateFormat
@@ -38,9 +37,9 @@ import java.util.Date
 import java.util.Locale
 
 @Composable
-fun KLineChartScreen(@Symbol symbol: String) {
-    val displayName = symbol.symbolToDisplayName(LocalContext.current)
-    val klineViewModel: KlineViewModel = klineViewModel(BTCUSDT, INTERVAL_15m)
+fun KLineChartScreen(symbol: Symbol) {
+    val displayName = symbol.toDisplayName()
+    val klineViewModel: KlineViewModel = klineViewModel(symbol, INTERVAL_15m)
 
     Column(
         modifier = Modifier
@@ -65,7 +64,7 @@ fun KLineChartScreen(@Symbol symbol: String) {
 @Composable
 fun KLineChart(
     modifier: Modifier,
-    symbol: String,
+    symbol: Symbol,
     klineViewModel: KlineViewModel,
 ) {
     val context = LocalContext.current
@@ -73,7 +72,7 @@ fun KLineChart(
     val candleChart = remember { CandleStickChart(context) }
     val klineDataSet by klineViewModel.items.observeAsState(emptyMap())
     val dataSet = remember {
-        CandleDataSet(emptyList(), symbol.symbolToDisplayName(context))
+        CandleDataSet(emptyList(), symbol.toDisplayName())
             .apply {
                 decreasingColor = DecreasingColor.toArgb()
                 increasingColor = IncreasingColor.toArgb()

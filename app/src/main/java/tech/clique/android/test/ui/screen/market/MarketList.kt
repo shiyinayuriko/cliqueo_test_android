@@ -3,6 +3,7 @@ package tech.clique.android.test.ui.screen.market
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,20 +19,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import tech.clique.android.test.ui.symbolToDisplayName
-import tech.clique.android.test.ui.trimmedPrice
+import tech.clique.android.test.data.Symbol
 import tech.clique.android.test.ui.theme.DecreasingColor
 import tech.clique.android.test.ui.theme.IncreasingColor
 import tech.clique.android.test.ui.theme.NeutralColor
+import tech.clique.android.test.ui.toDisplayName
+import tech.clique.android.test.ui.toTrimmedPrice
 
 @Composable
 fun MarketList(
     navController: NavController,
-    filters: List<String> = emptyList()
+    filters: List<Symbol> = emptyList()
 ) {
     val viewModel: MarketListViewModel = viewModel()
     val items by viewModel.items.observeAsState(emptyMap())
@@ -45,7 +46,9 @@ fun MarketList(
         ) { (symbol, item) ->
             ItemCard(
                 symbol = symbol,
-                price = item.trimmedPrice,
+                price = item.price,
+                askPrice = item.askPrice,
+                bidPrice = item.bidPrice,
                 percentage = item.changePercentage,
                 navController = navController,
             )
@@ -55,8 +58,10 @@ fun MarketList(
 
 @Composable
 fun ItemCard(
-    symbol: String,
+    symbol: Symbol,
     price: String,
+    askPrice: String,
+    bidPrice: String,
     percentage: String,
     navController: NavController,
 ) {
@@ -67,7 +72,7 @@ fun ItemCard(
             .padding(horizontal = 16.dp)
             .fillMaxWidth()
             .clickable() {
-                navController.navigate("detail/$symbol")
+                navController.navigate("detail/${symbol.symbol}")
             },
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -76,15 +81,23 @@ fun ItemCard(
             modifier = Modifier
                 .weight(1f)
                 .fillMaxWidth(),
-            text = symbol.symbolToDisplayName(LocalContext.current),
+            text = symbol.toDisplayName(),
             style = MaterialTheme.typography.titleMedium
         )
-        Text(
+        Column(
             modifier = Modifier
-                .padding(horizontal = 16.dp),
-            text = price,
-            style = MaterialTheme.typography.bodyLarge,
-        )
+                .padding(horizontal = 16.dp, vertical = 16.dp),
+            horizontalAlignment = Alignment.End,
+        ) {
+            Text(
+                text = "\$${price.toTrimmedPrice()}",
+                style = MaterialTheme.typography.bodyMedium,
+            )
+            Text(
+                text = "${bidPrice.toTrimmedPrice()} / ${askPrice.toTrimmedPrice()}",
+                style = MaterialTheme.typography.bodySmall,
+            )
+        }
 
         val p = percentage.toFloat()
         val color = when {

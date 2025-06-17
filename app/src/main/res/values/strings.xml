@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">Cliqueo Trading App Task</string>
-    <string name="btc_usdt">BTC/USDT</string>
-    <string name="eth_usdt">ETH/USDT</string>
-
-    <string name="market_list_title">Markets</string>
 
     <string name="market_list_tab_favourite">Favourite</string>
     <string name="market_list_tab_market">Market</string>

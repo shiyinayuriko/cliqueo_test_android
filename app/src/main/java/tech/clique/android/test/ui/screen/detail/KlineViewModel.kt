@@ -15,9 +15,10 @@ import kotlinx.coroutines.launch
 import tech.clique.android.test.data.DataRepository
 import tech.clique.android.test.data.model.KlineData
 import tech.clique.android.test.data.network.binance.KlineInterval
-import tech.clique.android.test.data.network.binance.Symbol
+import tech.clique.android.test.data.Symbol
+import tech.clique.android.test.utils.logE
 
-class KlineViewModel(symbol: String, interval: String) : ViewModel() {
+class KlineViewModel(symbol: Symbol, interval: String) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
 
     private var baseTime = 0L
@@ -42,8 +43,8 @@ class KlineViewModel(symbol: String, interval: String) : ViewModel() {
                     }
                     allKlines.putAll(keyTrimmed)
                     _items.value = allKlines.toMap()
-                }, {
-
+                }, { e ->
+                    logE("fetchKline fail" , e)
                 }
             ).also { compositeDisposable.add(it) }
 
@@ -58,7 +59,7 @@ class KlineViewModel(symbol: String, interval: String) : ViewModel() {
                         _updateEvent.emit(KlineUpdateEvent(isNew, index, kline))
                     }
                 }, { e ->
-
+                    logE("subscribeKline fail" , e)
                 }).also { compositeDisposable.add(it) }
     }
 
@@ -78,9 +79,9 @@ class KlineViewModel(symbol: String, interval: String) : ViewModel() {
 }
 
 @Composable
-fun klineViewModel(@Symbol symbol: String, @KlineInterval interval: String): KlineViewModel {
+fun klineViewModel(symbol: Symbol, @KlineInterval interval: String): KlineViewModel {
     return viewModel(
-        key = "klineVM_${symbol}_$interval",
+        key = "klineVM_${symbol.symbol}_$interval",
         factory = object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 @Suppress("UNCHECKED_CAST")

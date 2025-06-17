@@ -1,9 +1,9 @@
 ## Core Features
 
-- [ ] A. Real-Time (or Mocked) Market Data Feed
+- [x] A. Real-Time (or Mocked) Market Data Feed
   - [x] Fetch (or simulate) live price data for *at least* one crypto pair (e.g., BTC-USDT).
-  - [ ] Display continuously updating bid/ask and last trade on a *Market Overview* screen.
-  - [ ] Updates should occur ≤ 500 ms without jank on a Pixel 6 (≈ 3 000 msgs/s sustained in mock mode is a plus).
+  - [x] Display continuously updating bid/ask and last trade on a *Market Overview* screen.
+  - [x] Updates should occur ≤ 500 ms without jank on a Pixel 6 (≈ 3 000 msgs/s sustained in mock mode is a plus).
   
 - [ ] B. Candlestick (or Line) Chart
   - [ ] Embed the chosen chart component inside a *Detail* screen.
@@ -49,3 +49,4 @@ Feel free to note unfinished stretch items in the README—clarity about next st
 - [ ] add cache for network fetch
 - [ ] ~~support pull refresh~~
 - [ ] replace LiveData to StateFlow
+- [ ] optimize the loading in favourite page with separate api request?

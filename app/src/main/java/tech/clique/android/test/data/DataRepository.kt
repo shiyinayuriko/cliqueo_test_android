@@ -5,7 +5,6 @@ import tech.clique.android.test.data.model.KlineData
 import tech.clique.android.test.data.model.TickerData
 import tech.clique.android.test.data.network.NetworkClient
 import tech.clique.android.test.data.network.binance.KlineInterval
-import tech.clique.android.test.data.network.binance.Symbol
 
 object DataRepository {
     fun fetchTickers(): Observable<List<TickerData>> {
@@ -18,7 +17,7 @@ object DataRepository {
     }
 
     fun fetchKline(
-        @Symbol symbol: String,
+        symbol: Symbol,
         @KlineInterval interval: String,
         startTime: Long? = null,
         endTime: Long? = null,
@@ -27,7 +26,7 @@ object DataRepository {
         return NetworkClient.fetchKline(symbol, interval, startTime, endTime)
     }
 
-    fun subscribeKline(@Symbol symbol: String, @KlineInterval interval: String): Observable<KlineData> {
+    fun subscribeKline(symbol: Symbol, @KlineInterval interval: String): Observable<KlineData> {
         return NetworkClient.subscribeKline(symbol, interval)
     }
 }

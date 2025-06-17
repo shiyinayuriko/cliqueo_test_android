@@ -7,10 +7,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import tech.clique.android.test.ui.screen.detail.DetailScreen
-import tech.clique.android.test.ui.screen.market.MarketListScreen
+import tech.clique.android.test.data.Symbol
 import tech.clique.android.test.ui.screen.NavigationRoutes.DETAIL
 import tech.clique.android.test.ui.screen.NavigationRoutes.MARKET_LIST
+import tech.clique.android.test.ui.screen.detail.DetailScreen
+import tech.clique.android.test.ui.screen.market.MarketListScreen
 
 object NavigationRoutes {
     const val MARKET_LIST = "marketList"
@@ -27,7 +28,8 @@ fun AppNavigation(
             route = DETAIL,
             arguments = listOf(navArgument("symbol") { type = NavType.StringType })
         ) { backStackEntry ->
-            val symbol = backStackEntry.arguments?.getString("symbol") ?: return@composable
+            val symbolStr = backStackEntry.arguments?.getString("symbol") ?: return@composable
+            val symbol = Symbol.fromSymbol(symbolStr)
             DetailScreen(navController, symbol)
         }
     }

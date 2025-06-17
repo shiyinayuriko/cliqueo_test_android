@@ -1,17 +1,17 @@
 package tech.clique.android.test.ui.screen.detail
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import tech.clique.android.test.data.network.binance.Symbol
+import tech.clique.android.test.data.Symbol
 
 @Composable
 fun DetailScreen(
     navController: NavController,
-    @Symbol symbol: String,
+    symbol: Symbol,
     modifier: Modifier = Modifier,
 ) {
     //                navController.navigate("detail/$BTCUSDT" )
-    Text(symbol)
+//    Text(symbol.symbol)
+    KLineChartScreen(symbol)
 }

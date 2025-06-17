@@ -1,15 +1,17 @@
 package tech.clique.android.test.data.network.binance
 
 import androidx.annotation.StringDef
+import tech.clique.android.test.data.Symbol
+
+val Symbol.binanceSymbol: String
+    get() = symbol
+
+val ALL_SYMBOLS = Symbol.entries
+    .filter { symbol: Symbol -> symbol != Symbol.UNKNOWN }
+    .map { symbol: Symbol -> symbol.binanceSymbol }
+
 
 const val BINANCE_BASE_URL = "https://api4.binance.com"
-
-const val BTCUSDT = "btcusdt"
-const val ETHUSDT = "ethusdt"
-val ALL_SYMBOLS = listOf(BTCUSDT, ETHUSDT)
-
-@Retention(AnnotationRetention.SOURCE)
-annotation class Symbol
 
 const val INTERVAL_1s = "1s"
 const val INTERVAL_1m = "1m"

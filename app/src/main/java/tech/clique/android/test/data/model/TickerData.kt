@@ -1,10 +1,12 @@
 package tech.clique.android.test.data.model
 
-import tech.clique.android.test.data.network.binance.Symbol
+import tech.clique.android.test.data.Symbol
 
 data class TickerData(
-    @Symbol val symbol: String,
+    val symbol: Symbol,
     val price: String,
+    val bidPrice: String,
+    val askPrice: String,
     val changePercentage: String,
 )
 

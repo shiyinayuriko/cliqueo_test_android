@@ -7,6 +7,8 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import tech.clique.android.test.data.DataRepository
 import tech.clique.android.test.data.model.TickerData
+import tech.clique.android.test.data.Symbol
+import tech.clique.android.test.utils.logE
 
 
 class MarketListViewModel : ViewModel() {
@@ -21,8 +23,8 @@ class MarketListViewModel : ViewModel() {
                         allTickersMap[ticker.symbol] = ticker
                     }
                     _items.value = allTickersMap.toMap()
-                }, {
-
+                }, { e ->
+                    logE("fetchTickers fail" , e)
                 }
             ).also { compositeDisposable.add(it) }
 
@@ -33,13 +35,13 @@ class MarketListViewModel : ViewModel() {
                     allTickersMap[ticker.symbol] = ticker
                     _items.value = allTickersMap.toMap()
                 }, { e ->
-
+                    logE("subscribeTickers fail" , e)
                 }).also { compositeDisposable.add(it) }
     }
 
-    private val allTickersMap = mutableMapOf<String, TickerData>()
-    private val _items = MutableLiveData<Map<String, TickerData>>(mapOf())
-    val items: LiveData<Map<String, TickerData>> = _items
+    private val allTickersMap = mutableMapOf<Symbol, TickerData>()
+    private val _items = MutableLiveData<Map<Symbol, TickerData>>(mapOf())
+    val items: LiveData<Map<Symbol, TickerData>> = _items
 
     override fun onCleared() {
         super.onCleared()

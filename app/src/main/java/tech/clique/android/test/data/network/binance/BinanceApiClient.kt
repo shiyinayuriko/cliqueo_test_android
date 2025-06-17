@@ -14,6 +14,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import tech.clique.android.test.data.model.KlineData
 import tech.clique.android.test.data.model.KlineDataSource
+import tech.clique.android.test.data.Symbol
 import tech.clique.android.test.data.model.TickerData
 import tech.clique.android.test.data.model.TickerDataSource
 import java.lang.reflect.Type
@@ -35,7 +36,7 @@ object BinanceApiClient {
     }
 
     fun getKlineData(
-        @Symbol symbol: String,
+        symbol: String,
         @KlineInterval interval: String,
         startTime: Long? = null,
         endTime: Long? = null,
@@ -90,7 +91,13 @@ data class FullTickerItem(
     @SerializedName("count") val tradeCount: Long,
 ) : TickerDataSource {
     override fun toTickerData(): TickerData {
-        return TickerData(symbol, lastPrice, priceChangePercent)
+        return TickerData(
+            Symbol.fromSymbol(symbol),
+            lastPrice,
+            bidPrice,
+            askPrice,
+            priceChangePercent,
+        )
     }
 }
 
