@@ -11,7 +11,7 @@
   - [x] Support common interactions: pinch-zoom, pan/scroll, and value marker on tap (O/H/L/C display).
 
 - [ ] C. Basic Trading Interface
-  - [ ] Watchlist Screen – Add/remove crypto pairs; persist locally (e.g., DataStore).
+  - [x] Watchlist Screen – Add/remove crypto pairs; persist locally (e.g., DataStore).
   - [ ] Order Entry Sheet – For the selected pair, allow:
     - `Price`, `Amount`, `Side` (Buy/Sell), `Order Type` (Market/Limit).
     - “Confirm” → store the order locally (mock) and reflect in state.
@@ -49,5 +49,5 @@ Feel free to note unfinished stretch items in the README—clarity about next st
 - [ ] add cache for network fetch
 - [ ] ~~support pull refresh~~
 - [ ] replace LiveData to StateFlow
-- [ ] optimize the loading in favourite page with separate api request?
+- [ ] optimize the loading in favourite/watchList page with separate api request?
 - [ ] polish UI tab height

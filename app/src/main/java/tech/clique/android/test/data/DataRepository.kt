@@ -1,6 +1,7 @@
 package tech.clique.android.test.data
 
 import io.reactivex.rxjava3.core.Observable
+import tech.clique.android.test.data.datastore.WatchListData
 import tech.clique.android.test.data.model.KlineData
 import tech.clique.android.test.data.model.TickerData
 import tech.clique.android.test.data.network.NetworkClient
@@ -28,4 +29,8 @@ object DataRepository {
     fun subscribeKline(symbol: Symbol, interval: KlineInterval): Observable<KlineData> {
         return NetworkClient.subscribeKline(symbol, interval)
     }
+
+    val watchList = WatchListData
+    val watchListData = WatchListData.data
+
 }

@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.runtime.livedata)
+    implementation(libs.androidx.datastore.preferences)
     implementation(libs.gson)
     implementation(libs.okhttp)
     implementation(libs.rxjava)

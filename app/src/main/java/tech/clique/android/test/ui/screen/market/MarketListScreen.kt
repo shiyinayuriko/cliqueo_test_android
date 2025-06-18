@@ -15,14 +15,16 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 import tech.clique.android.test.R
-import tech.clique.android.test.data.Symbol
+import tech.clique.android.test.data.DataRepository
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -30,11 +32,12 @@ fun MarketListScreen(
     navController: NavController,
 ) {
     val tabs = listOf(
-        R.string.market_list_tab_favourite,
+        R.string.market_list_tab_watch_list,
         R.string.market_list_tab_market,
     )
     val pagerState = rememberPagerState(pageCount = { tabs.size })
     val coroutineScope = rememberCoroutineScope()
+    val watchList by DataRepository.watchListData.collectAsStateWithLifecycle(emptyList())
 
     Scaffold(
         topBar = {
@@ -69,7 +72,7 @@ fun MarketListScreen(
                 modifier = Modifier.fillMaxWidth()
             ) { page ->
                 when (tabs[page]) {
-                    R.string.market_list_tab_favourite -> MarketList(navController, filters = listOf(Symbol.BTCUSDT))
+                    R.string.market_list_tab_watch_list -> MarketList(navController, filters = watchList)
                     R.string.market_list_tab_market -> MarketList(navController)
                 }
             }
