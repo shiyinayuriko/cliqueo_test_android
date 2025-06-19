@@ -17,18 +17,18 @@
     - “Confirm” → store the order locally (mock) and reflect in state.
   - [x] Order History / Open Orders – List of placed orders with status (Filled, Canceled, etc.).
 
-- [ ] D. Secure Key / Settings Management \*(Optional)\*
-  - Demonstrate storing a mock API Key / Secret using Android Keystore or EncryptedSharedPreferences.
+- [ ] ~~D. Secure Key / Settings Management \*(Optional)\*~~
+  - ~~Demonstrate storing a mock API Key / Secret using Android Keystore or EncryptedSharedPreferences.~~
 
 ------
 
 ## Extended / Optional Enhancements
 
 - [x] WebSocket Integration with a public API (Binance, Coinbase Pro, etc.).
-- [ ] Jetpack Compose + StateFlow end-to-end (no XML).
-- [ ] Multiple Timeframes & Indicators (MA, RSI overlays).
+- [x] **Jetpack Compose + StateFlow end-to-end (no XML).**
+- [ ] ~~Multiple Timeframes & Indicators (MA, RSI overlays).~~
 - [ ] Push Notifications / Local Alerts when price crosses a threshold (WorkManager or FCM).
-- [ ] Biometric Prompt before confirming an order, binding a nonce to fingerprint/face-auth.
+- [ ] ~~Biometric Prompt before confirming an order, binding a nonce to fingerprint/face-auth.~~
 
 Feel free to note unfinished stretch items in the README—clarity about next steps is valued. Good luck, and happy coding!
 
@@ -37,20 +37,20 @@ Feel free to note unfinished stretch items in the README—clarity about next st
 ## Custom Tasks
 
 - [x] check Material 3 guidance 
-- [ ] (Optional) responsive design for tablets
+- [x] (Optional) responsive design for tablets
 - [ ] check `Choreographer` or `JankStats`
-- [ ] setup unit tests (e.g., price-parsing logic, order-placement flow).
+- [ ] **setup unit tests (e.g., price-parsing logic, order-placement flow).**
 - [ ] (Optional) One instrumentation/UI test with Espresso or Compose UI Test.
-- [ ] Explain any performance optimizations in `README`.
-- [ ] instructions info in README 
-- [ ] optimize api retry strategy
-- [ ] http3 + retrofit log and intercept
-- [ ] add loading status view for ws&http
+- [ ] **Explain any performance optimizations in `README`.**
+- [ ] **instructions info in README** 
+- [ ] **optimize api retry strategy**
+- [ ] **http3 + retrofit log and intercept**
+- [ ] **add loading status view for ws&http**
 - [ ] add cache for network fetch
 - [ ] ~~support pull refresh~~
-- [ ] replace LiveData to StateFlow
-- [ ] optimize the loading in favourite/watchList page with separate api request?
-- [ ] polish UI tab height
+- [ ] **replace LiveData to StateFlow**
+- [ ] ~~optimize the loading in favourite/watchList page with separate api request?~~
 - [ ] use room to store orders
+- [ ] 1mon kline chart  Skipping Issue problem
 - [ ] add back on detail page
-- [ ] add realtime price beside order forms
+- [ ] ~~add realtime price beside order forms~~
