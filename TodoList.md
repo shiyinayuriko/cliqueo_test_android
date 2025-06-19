@@ -41,8 +41,8 @@ Feel free to note unfinished stretch items in the README—clarity about next st
 - [ ] check `Choreographer` or `JankStats`
 - [ ] **setup unit tests (e.g., price-parsing logic, order-placement flow).**
 - [ ] (Optional) One instrumentation/UI test with Espresso or Compose UI Test.
-- [ ] **Explain any performance optimizations in `README`.**
-- [ ] **instructions info in README** 
+- [x] **Explain any performance optimizations in `README`.**
+- [x] **instructions info in README** 
 - [ ] **optimize api retry strategy**
 - [ ] **http3 + retrofit log and intercept**
 - [x] **add loading status view for ws&http**
