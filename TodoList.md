@@ -52,5 +52,5 @@ Feel free to note unfinished stretch items in the README—clarity about next st
 - [ ] ~~optimize the loading in favourite/watchList page with separate api request?~~
 - [ ] use room to store orders
 - [ ] 1mon kline chart  Skipping Issue problem
-- [ ] add back on detail page
+- [x] add back on detail page
 - [ ] ~~add realtime price beside order forms~~

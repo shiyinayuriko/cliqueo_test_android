@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Button
@@ -53,6 +54,18 @@ fun DetailScreen(
                 modifier = Modifier
                     .background(color = MaterialTheme.colorScheme.primary),
                 title = { Text(symbol.toDisplayName()) },
+                navigationIcon = {
+                    IconButton(
+                        onClick = {
+                            navController.navigateUp()
+                        }
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = null,
+                        )
+                    }
+                },
                 actions = {
                     IconButton(onClick = {
                         if (isWatched) DataRepository.watchList.removeSymbol(symbol)
