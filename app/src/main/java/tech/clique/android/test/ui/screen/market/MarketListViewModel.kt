@@ -15,6 +15,7 @@ import tech.clique.android.test.ui.screen.common.ViewStatus
 import tech.clique.android.test.ui.screen.common.ViewStatus.StatusComplete
 import tech.clique.android.test.ui.screen.common.ViewStatus.StatusError
 import tech.clique.android.test.ui.screen.common.ViewStatus.StatusLoading
+import tech.clique.android.test.utils.logD
 import tech.clique.android.test.utils.logE
 
 
@@ -42,6 +43,7 @@ class MarketListViewModel : ViewModel() {
                     }
                     _items.value = allTickersMap.toMap()
                     _loadingStatus.value = StatusComplete
+                    logD("fetchTickers success ${tickerList.size}" )
                 }, { e ->
                     logE("fetchTickers fail" , e)
                     _loadingStatus.value = StatusError("Load Market List fail:\n${e.message}")

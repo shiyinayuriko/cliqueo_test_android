@@ -54,3 +54,4 @@ Feel free to note unfinished stretch items in the README—clarity about next st
 - [ ] 1mon kline chart  Skipping Issue problem
 - [x] add back on detail page
 - [ ] ~~add realtime price beside order forms~~
+- [x] **List flash on page first loaded issue**

@@ -25,8 +25,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -45,7 +47,8 @@ import tech.clique.android.test.ui.toTrimmedPrice
 fun MarketList(
     navController: NavController, filters: List<Symbol>? = null
 ) {
-    val viewModel: MarketListViewModel = viewModel()
+    // FIXME tmp fix for double call from setContent in onCreate(), should move data load from VM to DataRepository
+    val viewModel: MarketListViewModel = viewModel(viewModelStoreOwner = (LocalContext.current as ViewModelStoreOwner))
     val items by viewModel.items.observeAsState(emptyMap())
     val loadingStatus by viewModel.loadingStatus.collectAsStateWithLifecycle()
     ViewStatusContainer(
