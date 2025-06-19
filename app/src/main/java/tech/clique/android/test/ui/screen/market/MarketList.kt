@@ -34,6 +34,7 @@ import kotlinx.coroutines.flow.map
 import tech.clique.android.test.R
 import tech.clique.android.test.data.DataRepository
 import tech.clique.android.test.data.Symbol
+import tech.clique.android.test.ui.screen.common.ViewStatusContainer
 import tech.clique.android.test.ui.theme.DecreasingColor
 import tech.clique.android.test.ui.theme.IncreasingColor
 import tech.clique.android.test.ui.theme.NeutralColor
@@ -46,22 +47,26 @@ fun MarketList(
 ) {
     val viewModel: MarketListViewModel = viewModel()
     val items by viewModel.items.observeAsState(emptyMap())
-
-    LazyColumn(
-        modifier = Modifier.fillMaxSize(),
+    val loadingStatus by viewModel.loadingStatus.collectAsStateWithLifecycle()
+    ViewStatusContainer(
+        status = loadingStatus,
     ) {
-        items(
-            items = items.toList().filter { (symbol, _) -> filters == null || symbol in filters },
-            key = { (symbol, _) -> symbol }
-        ) { (symbol, item) ->
-            ItemCard(
-                symbol = symbol,
-                price = item.price,
-                askPrice = item.askPrice,
-                bidPrice = item.bidPrice,
-                percentage = item.changePercentage,
-                navController = navController,
-            )
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            items(
+                items = items.toList().filter { (symbol, _) -> filters == null || symbol in filters },
+                key = { (symbol, _) -> symbol }
+            ) { (symbol, item) ->
+                ItemCard(
+                    symbol = symbol,
+                    price = item.price,
+                    askPrice = item.askPrice,
+                    bidPrice = item.bidPrice,
+                    percentage = item.changePercentage,
+                    navController = navController,
+                )
+            }
         }
     }
 }

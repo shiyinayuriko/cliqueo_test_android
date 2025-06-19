@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
@@ -100,14 +101,20 @@ fun DetailScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1f)
-                    .heightIn(max = 300.dp),
+                    .weight(1f),
             ) {
-                KLineChart(
-                    modifier = Modifier.fillMaxSize(),
-                    symbol = symbol,
-                    interval = tabs[currentSelected],
-                )
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentHeight()
+                        .heightIn(max = 300.dp),
+                ) {
+                    KLineChart(
+                        modifier = Modifier.fillMaxSize(),
+                        symbol = symbol,
+                        interval = tabs[currentSelected],
+                    )
+                }
             }
             Button(
                 modifier = Modifier

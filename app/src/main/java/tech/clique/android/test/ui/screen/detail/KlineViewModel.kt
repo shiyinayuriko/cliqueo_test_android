@@ -13,9 +13,9 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import tech.clique.android.test.data.DataRepository
-import tech.clique.android.test.data.model.KlineData
-import tech.clique.android.test.data.Symbol
 import tech.clique.android.test.data.KlineInterval
+import tech.clique.android.test.data.Symbol
+import tech.clique.android.test.data.model.KlineData
 import tech.clique.android.test.utils.logE
 
 class KlineViewModel(symbol: Symbol, interval: KlineInterval) : ViewModel() {
@@ -23,6 +23,13 @@ class KlineViewModel(symbol: Symbol, interval: KlineInterval) : ViewModel() {
 
     private var baseTime = 0L
     private var intervalTime = 1L
+
+    private val allKlines = mutableMapOf<Long, KlineData>()
+    private val _items = MutableLiveData<Map<Long, KlineData>>(mapOf())
+    val items: LiveData<Map<Long, KlineData>> = _items
+
+    private val _updateEvent = MutableSharedFlow<KlineUpdateEvent>()
+    val updateEvent = _updateEvent.asSharedFlow()
 
     init {
         DataRepository.fetchKline(symbol, interval)
@@ -63,15 +70,6 @@ class KlineViewModel(symbol: Symbol, interval: KlineInterval) : ViewModel() {
                     logE("subscribeKline fail" , e)
                 }).also { compositeDisposable.add(it) }
     }
-
-
-    private val allKlines = mutableMapOf<Long, KlineData>()
-    private val _items = MutableLiveData<Map<Long, KlineData>>(mapOf())
-    val items: LiveData<Map<Long, KlineData>> = _items
-
-    private val _updateEvent = MutableSharedFlow<KlineUpdateEvent>()
-    val updateEvent = _updateEvent.asSharedFlow()
-
 
     override fun onCleared() {
         super.onCleared()
