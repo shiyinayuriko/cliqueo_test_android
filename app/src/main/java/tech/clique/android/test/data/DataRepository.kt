@@ -1,6 +1,7 @@
 package tech.clique.android.test.data
 
 import io.reactivex.rxjava3.core.Observable
+import tech.clique.android.test.data.datastore.OrderListData
 import tech.clique.android.test.data.datastore.WatchListData
 import tech.clique.android.test.data.model.KlineData
 import tech.clique.android.test.data.model.TickerData
@@ -32,5 +33,8 @@ object DataRepository {
 
     val watchList = WatchListData
     val watchListData = WatchListData.data
+
+    val orderList = OrderListData
+    val orderListData = OrderListData.data
 
 }

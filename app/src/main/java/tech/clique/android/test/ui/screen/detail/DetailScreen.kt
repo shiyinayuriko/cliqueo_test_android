@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -30,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import kotlinx.coroutines.flow.map
+import tech.clique.android.test.R
 import tech.clique.android.test.data.DataRepository
 import tech.clique.android.test.data.KlineInterval
 import tech.clique.android.test.data.Symbol
@@ -40,7 +42,6 @@ import tech.clique.android.test.ui.toDisplayName
 fun DetailScreen(
     navController: NavController,
     symbol: Symbol,
-    modifier: Modifier = Modifier,
 ) {
     val tabs = KlineInterval.entries
     var currentSelected by remember { mutableIntStateOf(tabs.indexOf(KlineInterval.INTERVAL_15m)) }
@@ -86,12 +87,31 @@ fun DetailScreen(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .heightIn(min = 100.dp, max = 300.dp),
+                    .weight(1f)
+                    .heightIn(max = 300.dp),
             ) {
                 KLineChart(
                     modifier = Modifier.fillMaxSize(),
                     symbol = symbol,
                     interval = tabs[currentSelected],
+                )
+            }
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                shape = MaterialTheme.shapes.small,
+                onClick = {
+                    navController.apply {
+                        previousBackStackEntry
+                            ?.savedStateHandle
+                            ?.set("orderTarget", symbol)
+                    }.navigateUp()
+                }
+            ) {
+                Text(
+                    text = stringResource(R.string.kline_go_to_trade),
+                    style = MaterialTheme.typography.titleLarge,
                 )
             }
         }

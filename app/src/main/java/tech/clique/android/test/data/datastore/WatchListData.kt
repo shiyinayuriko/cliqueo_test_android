@@ -1,11 +1,7 @@
 package tech.clique.android.test.data.datastore
 
-import android.content.Context
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringSetPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -16,11 +12,11 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import tech.clique.android.test.application.ContextApplication
 import tech.clique.android.test.data.Symbol
+import tech.clique.android.test.data.datastore.DateStoreUtil.dataStore
 import tech.clique.android.test.utils.logD
 
 object WatchListData {
     private const val WATCH_LIST_KEY = "watch_list"
-    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "user_data")
     private val WATCH_LIST_KEY_DS = stringSetPreferencesKey(WATCH_LIST_KEY)
 
     init {

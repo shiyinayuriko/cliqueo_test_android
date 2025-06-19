@@ -10,12 +10,12 @@
   - [x] Render price history as candlesticks (preferred) or a line chart.
   - [x] Support common interactions: pinch-zoom, pan/scroll, and value marker on tap (O/H/L/C display).
 
-- [ ] C. Basic Trading Interface
+- [x] C. Basic Trading Interface
   - [x] Watchlist Screen – Add/remove crypto pairs; persist locally (e.g., DataStore).
-  - [ ] Order Entry Sheet – For the selected pair, allow:
+  - [x] Order Entry Sheet – For the selected pair, allow:
     - `Price`, `Amount`, `Side` (Buy/Sell), `Order Type` (Market/Limit).
     - “Confirm” → store the order locally (mock) and reflect in state.
-  - [ ] Order History / Open Orders – List of placed orders with status (Filled, Canceled, etc.).
+  - [x] Order History / Open Orders – List of placed orders with status (Filled, Canceled, etc.).
 
 - [ ] D. Secure Key / Settings Management \*(Optional)\*
   - Demonstrate storing a mock API Key / Secret using Android Keystore or EncryptedSharedPreferences.
@@ -51,3 +51,6 @@ Feel free to note unfinished stretch items in the README—clarity about next st
 - [ ] replace LiveData to StateFlow
 - [ ] optimize the loading in favourite/watchList page with separate api request?
 - [ ] polish UI tab height
+- [ ] use room to store orders
+- [ ] add back on detail page
+- [ ] add realtime price beside order forms

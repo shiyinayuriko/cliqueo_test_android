@@ -15,8 +15,12 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -25,6 +29,8 @@ import androidx.navigation.NavController
 import kotlinx.coroutines.launch
 import tech.clique.android.test.R
 import tech.clique.android.test.data.DataRepository
+import tech.clique.android.test.data.Symbol
+import tech.clique.android.test.ui.screen.order.OrderListAndFrom
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,11 +40,24 @@ fun MarketListScreen(
     val tabs = listOf(
         R.string.market_list_tab_watch_list,
         R.string.market_list_tab_market,
+        R.string.market_list_tab_orders,
     )
     val pagerState = rememberPagerState(pageCount = { tabs.size })
     val coroutineScope = rememberCoroutineScope()
     val watchList by DataRepository.watchListData.collectAsStateWithLifecycle(emptyList())
+    val savedStateHandle = navController.currentBackStackEntry?.savedStateHandle
+    var orderSymbol by remember { mutableStateOf(Symbol.BTCUSDT) }
 
+    LaunchedEffect(savedStateHandle) {
+        savedStateHandle?.getStateFlow("orderTarget", Symbol.UNKNOWN)
+            ?.collect { symbol ->
+                if (symbol != Symbol.UNKNOWN) {
+                    orderSymbol = symbol
+                    pagerState.animateScrollToPage(2, animationSpec = tween(300))
+                }
+                savedStateHandle.remove<Symbol>("orderTarget") // 清除状态
+            }
+    }
     Scaffold(
         topBar = {
             TopAppBar(
@@ -74,6 +93,7 @@ fun MarketListScreen(
                 when (tabs[page]) {
                     R.string.market_list_tab_watch_list -> MarketList(navController, filters = watchList)
                     R.string.market_list_tab_market -> MarketList(navController)
+                    R.string.market_list_tab_orders -> OrderListAndFrom(orderSymbol)
                 }
             }
         }

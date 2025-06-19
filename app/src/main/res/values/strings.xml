@@ -3,6 +3,16 @@
 
     <string name="market_list_tab_watch_list">Watch List</string>
     <string name="market_list_tab_market">Market</string>
+    <string name="market_list_tab_orders">Orders</string>
+    <string name="order_form_buy">Buy</string>
+    <string name="order_form_sell">Sell</string>
+    <string name="order_form_order_type_market">Market</string>
+    <string name="order_form_order_type_limit">Limit</string>
+
+    <string name="order_form_order_price_label">Price(%1$s)</string>
+    <string name="order_form_order_amount_label">Amount(%1$s)</string>
+    <string name="order_list_item_amount">Amount: %1$s</string>
+    <string name="order_list_item_price">price: %1$s</string>
 
     <string name="remove_from_watch_list">Remove Watch List</string>
     <string name="add_into_watch_list">Add Watch List</string>
@@ -29,21 +39,6 @@
     <string name="kline_marker_text_high_price">High Price: %1$s</string>
     <string name="kline_marker_text_low_price">Low Price: %1$s</string>
     <string name="kline_marker_text_close_price">Close Price: %1$s</string>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <string name="kline_go_to_trade">Go to Trade</string>
 
 </resources>
